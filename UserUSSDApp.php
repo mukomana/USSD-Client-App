@@ -6,6 +6,7 @@ if(!empty($_POST) && !empty($_POST[''])){
     require 'Subject.php';
     
     $sessionId      = $_POST['sessionId'];
+    $type           = $_POST['type'];
     $serviceCode    = $_POST['serviceCode'];
     $phoneNumber    = $_POST['phoneNumber'];
     $text           = $_POST['text'];
@@ -14,13 +15,11 @@ if(!empty($_POST) && !empty($_POST[''])){
     $userResponse=trim(end($textArray));
     
     if(isset($text)){ //Check if $text is not NULL
-        if($text==""){
+        if($text=="" && $type=1){
             
             $response="CON Welcome to CM registration portal. \nPlease enter your first name.";
         
-        }
-        
-        if(isset($level[0]) && $level[0]!="" and isset($level[1])){
+        }else if(isset($level[0]) && $level[0]!="" and isset($level[1])){
         
             $response = "CON Hi ".$level[0]." surname.";
         
